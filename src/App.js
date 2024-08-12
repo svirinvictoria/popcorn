@@ -525,7 +525,7 @@ function ErrorMessage({ message }) {
 function Footer() {
   return (
     <p className="footer">
-      &copy; 2024 by Victoria Svirin. Design and guidance by Jonas Schmedtmann
+     <span>&copy; 2024 by Victoria Svirin.</span> <span>Design and guidance by Jonas Schmedtmann</span> 
     </p>
   );
 }
