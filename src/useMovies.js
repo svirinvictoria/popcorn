@@ -7,8 +7,6 @@ export function useMovies(query, callback) {
   //used to store an error message and then display it in the UI
   const [error, setError] = useState("");
 
-  const KEY = "aa8ca65f";
-
   useEffect(
     function () {
       //this function will only be called if it exists.
@@ -23,8 +21,8 @@ export function useMovies(query, callback) {
           setIsLoading(true);
           setError(""); // cleaning the error state
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
-            { signal: controller.signal } //connecting abortController woth fetch
+            `${process.env.REACT_APP_URL}&s=${query}`,
+            { signal: controller.signal } //connecting abortController with fetch
           );
           if (!res.ok) {
             throw new Error("fetching failed");

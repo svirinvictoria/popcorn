@@ -4,8 +4,6 @@ import { useMovies } from "./useMovies";
 import { useKey } from "./useKey";
 import { useLocalStorageState } from "./useLocalStorageState";
 
-const KEY = "aa8ca65f";
-
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
@@ -110,7 +108,7 @@ export default function App() {
       </Main>
       <Footer />
     </>
-  )
+  );
 }
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -350,9 +348,7 @@ function MovieDetails({ selectedId, handleCloseMovie, onAddWatched, watched }) {
     function () {
       async function getMovieDetails() {
         setIsLoading(true);
-        const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
-        );
+        const res = await fetch(`${process.env.REACT_APP_URL}&i=${selectedId}`);
         const data = await res.json();
         setMovie(data);
         setIsLoading(false);
@@ -525,7 +521,8 @@ function ErrorMessage({ message }) {
 function Footer() {
   return (
     <p className="footer">
-     <span>&copy; 2024 by Victoria Svirin.</span> <span>Design and guidance by Jonas Schmedtmann</span> 
+      <span>&copy; 2024 by Victoria Svirin.</span>{" "}
+      <span>Design and guidance by Jonas Schmedtmann</span>
     </p>
   );
 }
